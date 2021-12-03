@@ -5,6 +5,39 @@
   </head>
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
+    <button id="fortuneCookieButton">Click for a fortune!</button>
+    <button id="randomPass">Click for random password</button>
+    <button id="luckyNumber">Lucky number generator</button>
+    <h2>Be the first to get the winning powerball numbers this month!</h2>
+    <button id="lottery">Winning powerball numbers</button>
+<div>
+    <p>A cow is an animal....
+      put mouse over the picture to see what a cow says.
+    </p>
+    <img style="height: 300px;"  id="cow" src="https://i5.walmartimages.com/asr/becfff59-fcde-4fdb-b1f7-94fff42c40c1.38c8f7ae374845d026351354aa3a398f.jpeg" alt="a cow"/>
+</div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <label for="Magic">Choose a magic power:</label>
+    <select name="Magic" id="magicPower">
+      <option value="fireballs" id="fireballs">Shoot fireballs</option>
+      <option value="fly" id="fly">Being able to fly</option>
+      <option value="strength" id="strength">Super strength</option>
+      <option value="invisible" id="invisible">Invisibility</option>
+      <option value="shapeshift" id="shapeshift">Shapeshift</option>
+      <option value="nothing" id="nothing">Have no powers and be a boring bum</option>
+    </select>
+
+
+
+
+
+  
+    
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -15,6 +48,87 @@
               alert(data);
             });
       };
+
+
+      document.querySelector('#fortuneCookieButton').onclick = function () {
+        axios.get('http://localhost:4000/api/fortune/')// /fortune makes a new connection between the different buttonsish
+        .then(function (response){
+          const data = response.data
+          alert(data)
+        })
+
+      }
+
+
+      // document.querySelector('#fireballs').onclick = function () {
+        
+        
+      //   axios.get('http://localhost:4000/api/powers/')
+      //   .then(function (response){
+      //     const data = response.data
+      //     alert(data)
+      //   })
+
+      // }
+
+      document.querySelector('#randomPass').onclick = function () {
+        axios.get('http://localhost:4000/api/passwords/')
+        .then(function (response){
+          const data = response.data
+          alert(data)
+        })
+
+      }
+
+      document.querySelector('#lottery').onclick = function () {
+        axios.get('http://localhost:4000/api/lottery/')
+        .then(function (response){
+          const data = response.data
+          alert(data)
+        })
+
+      }
+
+      document.querySelector('#luckyNumber').onclick = function () {
+        axios.get('http://localhost:4000/api/luckyNumber/')
+        .then(function (response){
+          const data = response.data
+          alert(data)
+        })
+      }
+
+    
+
+      const moo = (event) =>{
+       axios.get('http://localhost:4000/api/cowMoo/') 
+       alert('moo')
+      }
+
+      let cowKid = document.querySelector('#cow')
+
+
+      // cowKid.addEventListener('mouseover', moo)
+
+      
+
+
+
+
+
+
+
+
+
+          
+        
+
+
+
+
+
+
+
+
     </script>
   </body>
 </html>
